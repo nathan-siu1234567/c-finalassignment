@@ -14,7 +14,7 @@ int main()
 {
 	int player = 1, i, choice;
 	int score = 0;
-	
+
 	cout << "Enter player 1 name :";
 	cin >> p1;
 	cout << "Enter player 2 name:";
@@ -73,14 +73,14 @@ int main()
 	board();
 	if (i == 1)
 	{
-	
-		
+
+
 		cout << "==>\aPlayer " << --player << " win ";
 		cin.ignore();
 		cin.get();
 		return 0;
 	}
-	
+
 	else
 	{
 		cout << "==>\aGame draw";
@@ -89,7 +89,7 @@ int main()
 		cin.get();
 		return 0;
 	}
-	
+
 }
 
 
@@ -136,24 +136,24 @@ int checkwin()
 void board()
 {
 	system("cls");
-	cout << "\n\n\tTic Tac Toe\n\n";
+	cout << setw(90) << "\n\n\t\t\t\tTic Tac Toe\n\n";
 
-	cout  << "Player 1 (X)  -  Player 2 (O)" << endl << endl;
+	cout << setw(53) << "Player 1 (X)  -  Player 2 (O)" << endl << endl;
 	cout << endl;
 
-	cout << "     |     |     " << endl;
-	cout  << "  " << square[1] << "  |  " << square[2] << "  |  " << square[3] << endl;
+	cout << setw(45) << "     |     |     " << endl;
+	cout << setw(30) << "  " << square[1] << "  |  " << square[2] << "  |  " << square[3] << endl;
 
-	cout  << "_____|_____|_____" << endl;
-	cout  << "     |     |     " << endl;
+	cout << setw(45) << "_____|_____|_____" << endl;
+	cout << setw(45) << "     |     |     " << endl;
 
-	cout  << "  " << square[4] << "  |  " << square[5] << "  |  " << square[6] << endl;
+	cout << setw(30) << "  " << square[4] << "  |  " << square[5] << "  |  " << square[6] << endl;
 
-	cout  << "_____|_____|_____" << endl;
-	cout << "     |     |     " << endl;
+	cout << setw(45) << "_____|_____|_____" << endl;
+	cout << setw(45) << "     |     |     " << endl;
 
-	cout  << "  " << square[7] << "  |  " << square[8] << "  |  " << square[9] << endl;
+	cout << setw(30) << "  " << square[7] << "  |  " << square[8] << "  |  " << square[9] << endl;
 
-	cout  << "     |     |     " << endl << endl;
+	cout << setw(45) << "     |     |     " << endl << endl;
 }
 
