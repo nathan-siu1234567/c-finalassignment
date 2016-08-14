@@ -8,7 +8,7 @@ char square[10] = { 'o','1','2','3','4','5','6','7','8','9' };
 
 int checkwin();
 void board();
-void writeToFile(int,int);
+
 string p1, p2;
 int main()
 {
@@ -73,9 +73,12 @@ int main()
 	board();
 	if (i == 1)
 	{
-		score++;
-		writeToFile(--player,score);
+	
+		
 		cout << "==>\aPlayer " << --player << " win ";
+		cin.ignore();
+		cin.get();
+		return 0;
 	}
 	
 	else
@@ -89,13 +92,7 @@ int main()
 	
 }
 
-/*********************************************
 
-FUNCTION TO RETURN GAME STATUS
-1 FOR GAME IS OVER WITH RESULT
--1 FOR GAME IS IN PROGRESS
-O GAME IS OVER AND NO RESULT
-**********************************************/
 
 int checkwin()
 {
@@ -139,43 +136,24 @@ int checkwin()
 void board()
 {
 	system("cls");
-	cout << setw(90) << "\n\n\t\t\t\tTic Tac Toe\n\n";
+	cout << "\n\n\tTic Tac Toe\n\n";
 
-	cout << setw(53) << "Player 1 (X)  -  Player 2 (O)" << endl << endl;
+	cout  << "Player 1 (X)  -  Player 2 (O)" << endl << endl;
 	cout << endl;
 
-	cout <<setw(45)<< "     |     |     " << endl;
-	cout << setw(30) << "  " << square[1] << "  |  " << square[2] << "  |  " << square[3] << endl;
+	cout << "     |     |     " << endl;
+	cout  << "  " << square[1] << "  |  " << square[2] << "  |  " << square[3] << endl;
 
-	cout << setw(45) << "_____|_____|_____" << endl;
-	cout << setw(45) << "     |     |     " << endl;
+	cout  << "_____|_____|_____" << endl;
+	cout  << "     |     |     " << endl;
 
-	cout << setw(30) << "  " << square[4] << "  |  " << square[5] << "  |  " << square[6] << endl;
+	cout  << "  " << square[4] << "  |  " << square[5] << "  |  " << square[6] << endl;
 
-	cout << setw(45) << "_____|_____|_____" << endl;
-	cout << setw(45) << "     |     |     " << endl;
+	cout  << "_____|_____|_____" << endl;
+	cout << "     |     |     " << endl;
 
-	cout << setw(30) << "  " << square[7] << "  |  " << square[8] << "  |  " << square[9] << endl;
+	cout  << "  " << square[7] << "  |  " << square[8] << "  |  " << square[9] << endl;
 
-	cout << setw(45) << "     |     |     " << endl << endl;
+	cout  << "     |     |     " << endl << endl;
 }
 
-void writeToFile(int player,int score)
-{
-	
-
-	if (player ==1)
-	{
-		ofstream scoreFile;
-		scoreFile.open("score.txt");
-		scoreFile << p1 << " " << "score:" << " " << score;
-	}
-	else if(player ==2)
-	{
-		ofstream scoreFile;
-		scoreFile.open("score.txt");
-		scoreFile << p2 << " " << "score:" << " " << score;
-	}
-
-
-}
