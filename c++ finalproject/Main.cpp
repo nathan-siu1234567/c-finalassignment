@@ -10,12 +10,13 @@ int checkwin();
 void board();
 void readFromFile();
 void writeToFile(int, int);
-string p1, p2;
+string p1, p2;//store player names in variable
 int userInput;
 int main()
 {
 	int player = 1, i, choice;
 	int score = 0;
+	//ask for user input
 	cout << "Hello and welcome to tic-tac-toe" << endl;
 	cout << "Press 1 to view winners list" << endl;
 	cout << "Press 2 to play" << endl;
@@ -38,15 +39,15 @@ int main()
 		{
 			board();
 			player = (player % 2) ? 1 : 2;
-
+			//ask player to pick a number on the grid
 			cout << "Player " << player << ", enter a number:  ";
 			cin >> choice;
-
+			//player 1 will be set to X and player 2 will be set to O
 			mark = (player == 1) ? 'X' : 'O';
-
+			//place the X and O in the proper spot on the grid
 			if (choice == 1 && square[1] == '1')
 
-				square[1] = mark;
+				square[1] = mark;//replace the number on the grid with an X or O character
 			else if (choice == 2 && square[2] == '2')
 
 				square[2] = mark;
@@ -71,7 +72,7 @@ int main()
 			else if (choice == 9 && square[9] == '9')
 
 				square[9] = mark;
-			else
+			else// check for invalid user input
 			{
 				cout << "Invalid move ";
 
@@ -87,8 +88,8 @@ int main()
 		if (i == 1)
 		{
 			score++;
-			writeToFile(-player, score);
-			cout << "==>\aPlayer " << -player << " win ";
+			writeToFile(--player, score);
+			cout << "==>\aPlayer " << --player << " win ";
 			cin.ignore();
 			cin.get();
 			return 0;
@@ -106,9 +107,12 @@ int main()
 
 	}
 }
-
+//this method will check if there is a winner
 int checkwin()
 {
+	// this method will check for all possibilities of 3 X's or 3 O's in a row
+	// if there is a winner the method will return a 1 and the main method will exit the loop
+	//otherwise continue if there is no winner yet
 	if (square[1] == square[2] && square[2] == square[3])
 	{
 		return 1;
@@ -149,7 +153,7 @@ int checkwin()
 		return 1;
 	}
 
-
+	// checks for a tie
 	else if (square[1] != '1' && square[2] != '2' && square[3] != '3'
 		&& square[4] != '4' && square[5] != '5' && square[6] != '6'
 		&& square[7] != '7' && square[8] != '8' && square[9] != '9')
@@ -165,7 +169,7 @@ int checkwin()
 
 
 
-
+// this method creates the game board
 void board()
 {
 	system("cls");
@@ -189,15 +193,15 @@ void board()
 
 	cout << setw(45) << "     |     |     " << endl << endl;
 }
-
+//this method stores the winner's name and score into a text file
 void writeToFile(int player, int score)
 {
 
 
-	if (player == 1)
+	if (player == 1)// if player 1 wins
 	{
-		ofstream scoreFile;
-		scoreFile.open("score.txt",std::ios_base::app);
+		ofstream scoreFile;//open file
+		scoreFile.open("score.txt",std::ios_base::app);//append the data to the text
 		scoreFile << p1 << " " << "score:" << " " << score << endl;;
 	}
 	else if (player == 2)
@@ -209,19 +213,20 @@ void writeToFile(int player, int score)
 
 
 }
+//this method will read the score file and bring up a list of all the winners
 void readFromFile()
 {
-	string line;
+	string line;//store the lines in the variable
 	ifstream readFile("score.txt");
 	if (readFile.is_open())
 	{
 		cout << "The Winners List For Tic-Tac-Toe" << endl;
-		while (getline(readFile, line))
+		while (getline(readFile, line))//loop through file
 		{
 			
-			cout << line << '\n';
+			cout << line << '\n';//print each line
 		}
-		readFile.close();
+		readFile.close();//close file
 	}
 	else
 	{
